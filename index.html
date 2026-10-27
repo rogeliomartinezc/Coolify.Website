@@ -2,466 +2,598 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Coolify | Keep It Cool</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Coolify | Keep It Cool</title>
 
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      scroll-behavior: smooth;
-    }
+<style>
+:root {
+  --azul: #2e3192;
+  --gris: #a5b0ba;
+  --blanco: #ffffff;
+  --azul-claro: #eaf3ff;
+  --azul-hielo: #bfe5ff;
+  --texto: #26324a;
+}
 
-    body {
-      font-family: Arial, sans-serif;
-      background: #ffffff;
-      color: #334155;
-      line-height: 1.7;
-    }
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+}
 
-    :root {
-      --azul-claro: #bdeaff;
-      --azul: #168ac4;
-      --azul-oscuro: #075985;
-      --gris: #f1f5f9;
-      --blanco: #ffffff;
-    }
+body {
+  font-family: Arial, sans-serif;
+  color: var(--texto);
+  line-height: 1.7;
+  background: white;
+}
 
-    header {
-      background: white;
-      padding: 15px 8%;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      flex-wrap: wrap;
-      box-shadow: 0 2px 12px #dbeafe;
-    }
+header {
+  background: white;
+  padding: 15px 7%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  box-shadow: 0 2px 12px #dce7f5;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
 
-    .logo {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      color: var(--azul-oscuro);
-      font-size: 26px;
-      font-weight: bold;
-    }
+.logo {
+  font-size: 27px;
+  font-weight: bold;
+  color: var(--azul);
+}
 
-    .logo img {
-      width: 65px;
-      height: 65px;
-      object-fit: contain;
-    }
+nav a {
+  text-decoration: none;
+  color: var(--azul);
+  font-weight: bold;
+  margin: 8px;
+}
 
-    nav a {
-      text-decoration: none;
-      color: var(--azul-oscuro);
-      margin: 0 10px;
-      font-weight: bold;
-    }
+nav a:hover {
+  text-decoration: underline;
+}
 
-    nav a:hover {
-      color: var(--azul);
-    }
+.hero {
+  padding: 70px 8%;
+  background: linear-gradient(130deg, #bfe5ff, #ffffff);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 40px;
+  flex-wrap: wrap;
+}
 
-    .hero {
-      min-height: 520px;
-      padding: 70px 10%;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 40px;
-      flex-wrap: wrap;
-      background: linear-gradient(120deg, #eaf9ff, #bdeaff);
-    }
+.hero-text {
+  flex: 1 1 350px;
+}
 
-    .hero-text {
-      flex: 1 1 350px;
-    }
+.hero h1 {
+  color: var(--azul);
+  font-size: clamp(45px, 7vw, 75px);
+  line-height: 1.1;
+}
 
-    .hero h1 {
-      color: var(--azul-oscuro);
-      font-size: clamp(42px, 6vw, 68px);
-      line-height: 1.1;
-    }
+.hero h1 span {
+  font-size: 0.65em;
+  font-style: italic;
+}
 
-    .hero h1 span {
-      color: var(--azul);
-    }
+.hero p {
+  font-size: 18px;
+  margin: 22px 0;
+}
 
-    .hero p {
-      margin: 22px 0;
-      font-size: 18px;
-    }
+.hero img {
+  width: min(100%, 390px);
+  border-radius: 15px;
+  box-shadow: 0 12px 30px #a5b0ba66;
+}
 
-    .hero img {
-      width: 260px;
-      max-width: 100%;
-      height: auto;
-      object-fit: contain;
-    }
+.boton {
+  display: inline-block;
+  background: var(--azul);
+  color: white;
+  padding: 13px 25px;
+  text-decoration: none;
+  border-radius: 30px;
+  font-weight: bold;
+  margin-top: 10px;
+}
 
-    .boton {
-      display: inline-block;
-      background: var(--azul);
-      color: white;
-      padding: 13px 25px;
-      border-radius: 30px;
-      text-decoration: none;
-      font-weight: bold;
-      transition: 0.3s;
-    }
+.boton:hover {
+  background: #20236f;
+}
 
-    .boton:hover {
-      background: var(--azul-oscuro);
-      transform: translateY(-3px);
-    }
+section {
+  padding: 70px 8%;
+}
 
-    section {
-      padding: 70px 10%;
-    }
+.titulo {
+  text-align: center;
+  max-width: 750px;
+  margin: 0 auto 40px;
+}
 
-    .titulo {
-      text-align: center;
-      margin-bottom: 40px;
-    }
+h2 {
+  color: var(--azul);
+  font-size: clamp(30px, 4vw, 42px);
+  margin-bottom: 15px;
+}
 
-    .titulo h2 {
-      color: var(--azul-oscuro);
-      font-size: 35px;
-      margin-bottom: 10px;
-    }
+.producto {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 25px;
+  align-items: stretch;
+}
 
-    .productos {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 25px;
-    }
+.tarjeta {
+  background: #f4f7fa;
+  border: 1px solid #e1e8ef;
+  border-radius: 20px;
+  padding: 28px;
+  text-align: center;
+  transition: 0.3s;
+}
 
-    .tarjeta {
-      background: var(--gris);
-      padding: 30px;
-      border-radius: 18px;
-      text-align: center;
-      border: 1px solid #e2e8f0;
-      transition: 0.3s;
-    }
+.tarjeta:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px #a5b0ba55;
+}
 
-    .tarjeta:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 10px 25px #dbeafe;
-    }
+.icono {
+  font-size: 42px;
+  margin-bottom: 12px;
+}
 
-    .tarjeta .icono {
-      font-size: 42px;
-      margin-bottom: 12px;
-    }
+.tarjeta h3 {
+  color: var(--azul);
+  margin-bottom: 10px;
+}
 
-    .tarjeta h3 {
-      color: var(--azul-oscuro);
-      margin-bottom: 10px;
-    }
+.precio-seccion {
+  background: var(--azul-claro);
+}
 
-    .historia {
-      background: var(--gris);
-    }
+.precio-caja {
+  max-width: 850px;
+  margin: auto;
+  background: white;
+  border-radius: 25px;
+  padding: 35px;
+  text-align: center;
+  border: 2px solid var(--azul-hielo);
+}
 
-    .historia-contenido {
-      max-width: 850px;
-      margin: auto;
-      text-align: center;
-    }
+.precio {
+  font-size: clamp(42px, 6vw, 60px);
+  color: var(--azul);
+  font-weight: bold;
+  margin: 15px 0;
+}
 
-    .historia-contenido p {
-      margin: 18px 0;
-      font-size: 17px;
-    }
+.historia {
+  background: #f4f6f8;
+}
 
-    .diferencias {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 25px;
-    }
+.historia-contenido {
+  max-width: 900px;
+  margin: auto;
+  text-align: center;
+}
 
-    .diferencia {
-      padding: 30px;
-      border-radius: 18px;
-    }
+.historia p {
+  margin: 18px 0;
+  font-size: 17px;
+}
 
-    .tradicional {
-      background: var(--gris);
-    }
+.diferencias {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 25px;
+}
 
-    .coolify {
-      background: #e4f6ff;
-      border: 2px solid var(--azul-claro);
-    }
+.diferencia {
+  padding: 30px;
+  border-radius: 20px;
+}
 
-    .diferencia h3 {
-      color: var(--azul-oscuro);
-      margin-bottom: 15px;
-    }
+.diferencia h3 {
+  color: var(--azul);
+  margin-bottom: 15px;
+}
 
-    .diferencia ul {
-      padding-left: 22px;
-    }
+.diferencia ul {
+  padding-left: 22px;
+}
 
-    .equipo {
-      text-align: center;
-      background: var(--gris);
-    }
+.diferencia li {
+  margin: 10px 0;
+}
 
-    .equipo p {
-      margin: 10px 0;
-    }
+.tradicional {
+  background: #f1f3f5;
+}
 
-    .contacto {
-      text-align: center;
-      background: var(--azul-oscuro);
-      color: white;
-    }
+.coolify {
+  background: var(--azul-claro);
+  border: 2px solid var(--azul-hielo);
+}
 
-    .contacto h2 {
-      font-size: 35px;
-      margin-bottom: 15px;
-    }
+.modelo {
+  background: white;
+}
 
-    .contacto p {
-      margin-bottom: 25px;
-    }
+.modelo .tarjeta {
+  text-align: left;
+}
 
-    .telefonos {
-      display: flex;
-      justify-content: center;
-      gap: 15px;
-      flex-wrap: wrap;
-    }
+.equipo {
+  background: #f4f6f8;
+  text-align: center;
+}
 
-    .telefonos a {
-      background: white;
-      color: var(--azul-oscuro);
-      text-decoration: none;
-      font-weight: bold;
-      padding: 13px 22px;
-      border-radius: 30px;
-    }
+.integrantes {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-top: 25px;
+}
 
-    footer {
-      text-align: center;
-      background: #eaf9ff;
-      padding: 22px;
-      color: var(--azul-oscuro);
-    }
+.integrantes span {
+  background: white;
+  border: 1px solid #dce4ee;
+  padding: 12px 20px;
+  border-radius: 30px;
+  color: var(--azul);
+  font-weight: bold;
+}
 
-    @media (max-width: 650px) {
-      header {
-        justify-content: center;
-        gap: 15px;
-      }
+.contacto {
+  text-align: center;
+  color: white;
+  background: linear-gradient(130deg, var(--azul), #4d62bb);
+}
 
-      nav {
-        text-align: center;
-      }
+.contacto h2 {
+  color: white;
+}
 
-      nav a {
-        display: inline-block;
-        margin: 5px;
-      }
+.contacto p {
+  margin-bottom: 25px;
+}
 
-      .hero {
-        text-align: center;
-        justify-content: center;
-      }
+.contactos {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  gap: 15px;
+  max-width: 850px;
+  margin: auto;
+}
 
-      .hero img {
-        width: 190px;
-      }
-    }
-  </style>
+.contactos a {
+  display: block;
+  padding: 18px;
+  background: white;
+  color: var(--azul);
+  border-radius: 15px;
+  text-decoration: none;
+  font-weight: bold;
+  overflow-wrap: anywhere;
+}
+
+.contactos a:hover {
+  background: var(--azul-claro);
+}
+
+footer {
+  text-align: center;
+  background: #f1f3f5;
+  color: var(--azul);
+  padding: 25px;
+}
+
+@media (max-width: 650px) {
+  header {
+    justify-content: center;
+    gap: 15px;
+  }
+
+  nav {
+    text-align: center;
+  }
+
+  nav a {
+    display: inline-block;
+  }
+
+  .hero {
+    text-align: center;
+    justify-content: center;
+  }
+
+  .hero img {
+    max-width: 320px;
+  }
+}
+</style>
 </head>
 
 <body>
 
-  <header>
-    <div class="logo">
-      <!-- Guarda tu logo como logo.png en esta misma carpeta -->
-      <img src="logo.png" alt="Logo de Coolify">
-      COOLIFY
-    </div>
+<header>
+  <div class="logo">❄ COOLIFY</div>
+  <nav>
+    <a href="#producto">Producto</a>
+    <a href="#beneficios">Beneficios</a>
+    <a href="#historia">Historia</a>
+    <a href="#diferencia">Diferencia</a>
+    <a href="#equipo">Equipo</a>
+    <a href="#contacto">Contacto</a>
+  </nav>
+</header>
 
-    <nav>
-      <a href="#producto">Producto</a>
-      <a href="#beneficios">Beneficios</a>
-      <a href="#historia">Historia</a>
-      <a href="#diferencia">Diferencia</a>
-      <a href="#contacto">Contacto</a>
-    </nav>
-  </header>
+<main>
 
-  <section class="hero">
-    <div class="hero-text">
-      <h1>COOLIFY<br><span>Keep It Cool.</span></h1>
-
-      <p>
-        El calor de Monterrey no tiene que arruinar tu bebida.
-        Descubre una nueva forma de disfrutar la frescura con
-        nuestro portavasos enfriador y nuestro termo especial.
-      </p>
-
-      <a href="#producto" class="boton">Descubre Coolify</a>
-    </div>
-
-    <img src="logo.png" alt="Pingüino azul, mascota de Coolify">
-  </section>
-
-  <section id="producto">
-    <div class="titulo">
-      <h2>Conoce nuestro producto</h2>
-      <p>Una idea creada para combatir el calor y disfrutar bebidas frescas.</p>
-    </div>
-
-    <div class="productos">
-      <div class="tarjeta">
-        <div class="icono">❄️</div>
-        <h3>Portavasos enfriador</h3>
-        <p>
-          Una base diseñada para enfriar y ayudar a conservar
-          la frescura de tu bebida.
-        </p>
-      </div>
-
-      <div class="tarjeta">
-        <div class="icono">🥤</div>
-        <h3>Termo especial</h3>
-        <p>
-          Un termo pensado para trabajar junto con nuestro
-          portavasos y ofrecer una experiencia refrescante.
-        </p>
-      </div>
-
-      <div class="tarjeta">
-        <div class="icono">💧</div>
-        <h3>Frescura diaria</h3>
-        <p>
-          Una propuesta práctica para quienes quieren disfrutar
-          una bebida fría durante sus actividades.
-        </p>
-      </div>
-    </div>
-  </section>
-
-  <section id="beneficios">
-    <div class="titulo">
-      <h2>¿Por qué elegir Coolify?</h2>
-    </div>
-
-    <div class="productos">
-      <div class="tarjeta">
-        <div class="icono">☀️</div>
-        <h3>Ideal para el calor</h3>
-        <p>Inspirado en las altas temperaturas de Monterrey.</p>
-      </div>
-
-      <div class="tarjeta">
-        <div class="icono">🚗</div>
-        <h3>Para tu rutina</h3>
-        <p>Una idea para quienes pasan tiempo en el carro, escuela o trabajo.</p>
-      </div>
-
-      <div class="tarjeta">
-        <div class="icono">💙</div>
-        <h3>Innovación</h3>
-        <p>Buscamos convertir un problema cotidiano en una solución diferente.</p>
-      </div>
-    </div>
-  </section>
-
-  <section class="historia" id="historia">
-    <div class="historia-contenido">
-      <div class="titulo">
-        <h2>Nuestra historia</h2>
-        <p>Todo comenzó con una necesidad real.</p>
-      </div>
-
-      <p>
-        Coolify nació por una situación que vivimos con el calor
-        de Monterrey: dejar una botella de agua o una bebida dentro
-        del carro bajo el sol y encontrarla demasiado caliente
-        cuando queremos tomarla.
-      </p>
-
-      <p>
-        Nos dimos cuenta de que muchas personas tienen el mismo
-        problema y pensamos en una forma de ayudarlas a disfrutar
-        bebidas frescas. Así surgió la idea de crear un portavasos
-        enfriador que funcione junto con un termo especial.
-      </p>
-
-      <p>
-        Nuestra meta es ofrecer una alternativa práctica e innovadora
-        que haga los días calurosos un poco más agradables.
-      </p>
-
-      <h3 style="color:#075985;">Coolify: frescura que te acompaña.</h3>
-    </div>
-  </section>
-
-  <section id="diferencia">
-    <div class="titulo">
-      <h2>¿Qué nos hace diferentes?</h2>
-      <p>No queremos ser un portavasos más.</p>
-    </div>
-
-    <div class="diferencias">
-      <div class="diferencia tradicional">
-        <h3>Portavasos tradicionales</h3>
-        <ul>
-          <li>Principalmente sostienen tu bebida.</li>
-          <li>No están diseñados para enfriarla activamente.</li>
-          <li>No ofrecen por sí solos una solución al calor.</li>
-        </ul>
-      </div>
-
-      <div class="diferencia coolify">
-        <h3>Coolify</h3>
-        <ul>
-          <li>Combina un portavasos enfriador con un termo especial.</li>
-          <li>Busca ayudar a mantener tu bebida fresca.</li>
-          <li>Fue pensado para las necesidades del clima de Monterrey.</li>
-          <li>Une practicidad, innovación y frescura.</li>
-        </ul>
-      </div>
-    </div>
-  </section>
-
-  <section class="equipo">
-    <div class="titulo">
-      <h2>Conoce a nuestro equipo</h2>
-      <p>Una idea desarrollada con creatividad y trabajo en equipo.</p>
-    </div>
-
-    <p>Inés Corcuera · Vivian Ruiz · Rogelio Martínez</p>
-    <p>Diego Cruz · Mateo Martínez</p>
-  </section>
-
-  <section class="contacto" id="contacto">
-    <h2>¡Mantente fresco!</h2>
+<section class="hero">
+  <div class="hero-text">
+    <h1>COOLIFY<br><span>Keep It Cool.</span></h1>
     <p>
-      ¿Quieres conocer más sobre Coolify?
-      Contáctanos para conocer las novedades de nuestro proyecto.
+      ¡El calor de Monterrey no tiene que arruinar tu bebida!
+      Conoce nuestro termo especial con portavasos enfriador,
+      creado para ayudarte a disfrutar una bebida fría durante
+      tus actividades diarias.
     </p>
+    <a href="#producto" class="boton">Descubre Coolify</a>
+  </div>
 
-    <div class="telefonos">
-      <a href="tel:+528123479965">📞 812 347 9965</a>
-      <a href="tel:+528131106288">📞 813 110 6288</a>
+  <img
+    src="flyer.png"
+    alt="Flyer oficial de Coolify con el termo azul y sus beneficios">
+</section>
+
+<section id="producto">
+  <div class="titulo">
+    <h2>Conoce nuestro producto</h2>
+    <p>
+      Una combinación de termo especial y portavasos enfriador
+      pensada para disfrutar más frescura en los días calurosos.
+    </p>
+  </div>
+
+  <div class="producto">
+    <div class="tarjeta">
+      <div class="icono">❄️</div>
+      <h3>Portavasos enfriador</h3>
+      <p>
+        Diseñado para trabajar junto con nuestro termo especial
+        y ayudar a enfriar la bebida.
+      </p>
     </div>
-  </section>
 
-  <footer>
-    <p><strong>COOLIFY — Keep It Cool.</strong></p>
-    <p>Una idea creada para refrescar tus días.</p>
-  </footer>
+    <div class="tarjeta">
+      <div class="icono">🥤</div>
+      <h3>Termo especial</h3>
+      <p>
+        Un termo creado para formar parte de la experiencia
+        Coolify y disfrutar tus bebidas.
+      </p>
+    </div>
+
+    <div class="tarjeta">
+      <div class="icono">💙</div>
+      <h3>Diseño Coolify</h3>
+      <p>
+        Una propuesta moderna, práctica y diferente, con
+        nuestra identidad azul y el pingüino de la marca.
+      </p>
+    </div>
+  </div>
+</section>
+
+<section class="precio-seccion">
+  <div class="precio-caja">
+    <h2>Consigue tu Coolify</h2>
+    <p>
+      El conjunto incluye nuestro termo especial
+      y el portavasos enfriador.
+    </p>
+    <div class="precio">$1,099 MXN</div>
+    <p>
+      Para consultar disponibilidad, métodos de pago
+      y opciones de entrega, comunícate con nuestro equipo.
+    </p>
+    <a href="#contacto" class="boton">Solicitar información</a>
+  </div>
+</section>
+
+<section id="beneficios">
+  <div class="titulo">
+    <h2>Beneficios de Coolify</h2>
+    <p>Frescura y practicidad para acompañarte todos los días.</p>
+  </div>
+
+  <div class="producto">
+    <div class="tarjeta">
+      <div class="icono">❄️</div>
+      <h3>Mantiene tu bebida fría</h3>
+      <p>
+        Busca conservar la frescura de tu bebida por más tiempo.
+      </p>
+    </div>
+
+    <div class="tarjeta">
+      <div class="icono">🧊</div>
+      <h3>Sin necesidad de hielos</h3>
+      <p>
+        La propuesta del producto es enfriar la bebida sin
+        tener que agregar hielos al termo.
+      </p>
+    </div>
+
+    <div class="tarjeta">
+      <div class="icono">🚗</div>
+      <h3>Para tu rutina</h3>
+      <p>
+        Pensado para estudiantes, deportistas, trabajadores
+        y personas que pasan tiempo en el carro.
+      </p>
+    </div>
+  </div>
+
+  <p style="text-align:center; margin-top:25px; color:#687386;">
+    Las prestaciones de enfriamiento deben comprobarse con
+    pruebas del producto antes de garantizar resultados específicos.
+  </p>
+</section>
+
+<section class="historia" id="historia">
+  <div class="historia-contenido">
+    <h2>Nuestra historia</h2>
+    <p>
+      Coolify nació por una situación que conocemos muy bien
+      en Monterrey: dejar una botella de agua o una bebida
+      dentro del carro bajo el sol y, cuando regresamos,
+      encontrarla demasiado caliente para tomarla.
+    </p>
+    <p>
+      Nos dimos cuenta de que muchas personas pasan por lo mismo.
+      Por eso pensamos en crear una solución que ayude a disfrutar
+      algo frío incluso durante los días de mucho calor.
+    </p>
+    <p>
+      Así surgió la idea de nuestro portavasos enfriador con
+      un termo especial. Queremos convertir una necesidad cotidiana
+      en una experiencia más práctica y refrescante.
+    </p>
+    <h3 style="color:#2e3192; margin-top:25px;">
+      Nuestra misión: hacer tus días más frescos.
+    </h3>
+  </div>
+</section>
+
+<section id="diferencia">
+  <div class="titulo">
+    <h2>¿Qué nos hace diferentes?</h2>
+    <p>Coolify busca ir más allá de un portavasos tradicional.</p>
+  </div>
+
+  <div class="diferencias">
+    <div class="diferencia tradicional">
+      <h3>Portavasos tradicionales</h3>
+      <ul>
+        <li>Su función principal es sostener el recipiente.</li>
+        <li>No suelen enfriar activamente las bebidas.</li>
+        <li>No resuelven por sí solos el problema de una bebida que se calienta en el carro.</li>
+      </ul>
+    </div>
+
+    <div class="diferencia coolify">
+      <h3>Coolify</h3>
+      <ul>
+        <li>Combina un termo especial con un portavasos enfriador.</li>
+        <li>Busca ayudar a mantener tu bebida fría por más tiempo.</li>
+        <li>Nació de una necesidad real relacionada con el calor de Monterrey.</li>
+        <li>Ofrece una propuesta integrada, práctica e innovadora.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="modelo" id="modelo">
+  <div class="titulo">
+    <h2>Nuestro modelo de negocio</h2>
+    <p>Una propuesta pensada para las necesidades de nuestros clientes.</p>
+  </div>
+
+  <div class="producto">
+    <div class="tarjeta">
+      <h3>Precio</h3>
+      <p>$1,099 MXN por el termo especial con su portavasos enfriador.</p>
+    </div>
+
+    <div class="tarjeta">
+      <h3>Público objetivo</h3>
+      <p>
+        Estudiantes, deportistas, trabajadores y personas que
+        quieren disfrutar bebidas frescas en climas calurosos.
+      </p>
+    </div>
+
+    <div class="tarjeta">
+      <h3>Ventas y distribución</h3>
+      <p>
+        Los interesados pueden contactarnos por teléfono,
+        correo o Instagram para consultar disponibilidad,
+        pagos y entrega. Nuestro proyecto comienza en Monterrey,
+        Nuevo León.
+      </p>
+    </div>
+  </div>
+</section>
+
+<section class="equipo" id="equipo">
+  <h2>Conoce a nuestro equipo</h2>
+  <p>
+    Somos un equipo que busca convertir una necesidad cotidiana
+    en una idea innovadora.
+  </p>
+
+  <div class="integrantes">
+    <span>Inés Corcuera</span>
+    <span>Vivian Ruiz</span>
+    <span>Rogelio Martínez</span>
+    <span>Diego Cruz</span>
+    <span>Mateo Martínez</span>
+  </div>
+</section>
+
+<section class="contacto" id="contacto">
+  <h2>¡Keep It Cool!</h2>
+  <p>
+    ¿Quieres conocer más sobre Coolify o consultar disponibilidad?
+    Ponte en contacto con nuestro equipo.
+  </p>
+
+  <div class="contactos">
+    <a href="mailto:creacoolify@gmail.com">
+      ✉️ Correo<br>
+      creacoolify@gmail.com
+    </a>
+
+    <a href="https://www.instagram.com/coolify.keepitcool/"
+       target="_blank" rel="noopener noreferrer">
+      📸 Instagram<br>
+      @coolify.keepitcool
+    </a>
+
+    <a href="tel:+528123479965">
+      📞 CEO<br>
+      812 347 9965
+    </a>
+
+    <a href="tel:+528131106288">
+      📞 Contacto del equipo<br>
+      813 110 6288
+    </a>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <h3>COOLIFY — Keep It Cool.</h3>
+  <p>Una idea nacida en Monterrey para disfrutar una experiencia más fresca.</p>
+  <p>© 2026 Coolify. Todos los derechos reservados.</p>
+</footer>
 
 </body>
 </html>
